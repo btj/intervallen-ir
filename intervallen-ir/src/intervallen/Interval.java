@@ -1,25 +1,60 @@
 package intervallen;
 
+/**
+ * Elke instantie van deze klasse slaat een
+ * interval met gehele ondergrens en bovengrens
+ * op.
+ * 
+ * @invar De bovengrens is groter dan of gelijk aan
+ *        de ondergrens
+ *    | getOndergrens() <= getBovengrens()
+ * @invar De lengte is gelijk aan de bovengrens
+ *        min de ondergrens
+ *    | getLengte() == getBovengrens() -
+ *    |     getOndergrens()
+ */
 public class Interval {
+	/**
+	 * @invar | 0 <= lengte
+	 */
 	private int ondergrens;
 	private int lengte;
 
-	int getOndergrens()
-	{ return this.ondergrens; }
+	public int getOndergrens()
+	{ return ondergrens; }
 	
-	int getBovengrens()
-	{ return this.ondergrens + this.lengte; }
+	public int getBovengrens()
+	{ return ondergrens + lengte; }
 	
-	Interval(int ondergrens, int bovengrens) {
+	public int getLengte() { return lengte; }
+	
+	/**
+	 * Stelt het object in met de gegeven waarden.
+	 * @pre | ondergrens <= bovengrens
+	 * @post | getOndergrens() == ondergrens
+	 * @post | getBovengrens() == bovengrens
+	 */
+	public Interval(int ondergrens, int bovengrens) {
 		this.ondergrens = ondergrens;
-		this.lengte = bovengrens - ondergrens;
+		lengte = bovengrens - ondergrens;
 	}
 	
-	void setOndergrens(int ondergrens) {
+	/**
+	 * @mutates | this
+	 * @post | getOndergrens() == ondergrens
+	 * @post | getLengte() == old(getLengte())
+	 */
+	public void setOndergrens(int ondergrens) {
 		this.ondergrens = ondergrens;
 	}
 	
-	void setBovengrens(int bovengrens) {
-		this.lengte = bovengrens - this.ondergrens;
+	/**
+	 * @pre | getOndergrens() <= bovengrens
+	 * @mutates | this
+	 * @post | getBovengrens() == bovengrens
+	 * @post | getOndergrens() == old(getOndergrens())
+	 */
+	public void setBovengrens(int bovengrens) {
+		lengte = bovengrens - ondergrens;
 	}
 }

@@ -1,0 +1,27 @@
+Hoe documenteer ik een data-abstractie
+
+A. Documenteer de API
+
+1. Schrijf een regel informele documentatie bij de
+   klasse
+   (Voor een mutable abstractie:
+    "Elke instantie van deze klasse slaat een ... op." 
+    Voor een immutable abstractie:
+    "Elke instantie van deze klasse stelt een ... voor."
+2. Noteer de abstractetoestandsinvarianten.
+3. Documenteer de constructoren en de mutatoren
+
+B. Documenteer de implementatie
+   Documenteer de representatie (=
+   hoe de gegevens opgeslagen worden in het geheugen)
+
+1. Noteer de representatie-invarianten
+   (bepalen de verzameling van *geldige*
+   representaties.)
+   
+   Sanity checks:
+   1. Als aan de representatie-invarianten voldaan is,
+      crashen de inspectoren niet.
+   2. Als aan de representatie-invarianten voldaan is,
+      is ook aan de abstractetoestandsinvarianten
+      voldaan.
